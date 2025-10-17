@@ -1,0 +1,15 @@
+.produtos {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+.title {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1.2rem;
+  margin: 0.5rem 0;
+}
+
+.price {
+  font-weight: bold;
+}
