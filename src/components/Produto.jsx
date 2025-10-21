@@ -17,7 +17,7 @@ const Produto = () => {
         const json = await response.json();
         setProduto(json);
       } catch (erro) {
-        setError("Um erro ocorreu");
+        setError("Um erro ocorreu:" + erro.message);
       } finally {
         setLoading(false);
       }
@@ -25,16 +25,18 @@ const Produto = () => {
     fetchProduto(`https://fakestoreapi.com/products/${id}`);
   }, [id]);
 
-  if (loading) return <div>Carregando...</div>;
+  if (loading) return <div className="loading"></div>;
   if (error) return <p>{error}</p>;
   if (produto === null) return null;
   return (
-    <section className={`${styles.produtos} animeLeft`}>
+    <section className={`${styles.produto} animeLeft`}>
       <Head
         title={`TechPop | ${produto.title}`}
         description={`TechPop | Esse é um produto: ${produto.title}}`}
       />
-      <img src={produto.image} alt={produto.title} />
+      <div>
+        <img src={produto.image} alt={produto.title} />
+      </div>
       <div>
         <h1>{produto.title}</h1>
         <span className={styles.price}>R$ {produto.price}</span>
